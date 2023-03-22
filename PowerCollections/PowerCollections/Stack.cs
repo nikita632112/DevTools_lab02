@@ -17,7 +17,7 @@ namespace PowerCollections
         {
             get { return count; }
         }
-        public Stack(int size)
+        public Stack(int size = 100)
         {
             if (size <= 0)
             {

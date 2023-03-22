@@ -1,9 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<Deterministic>false</Deterministic>
-	</PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <Deterministic>false</Deterministic>
+
+        <Authors>Стрекалов Никита, Д19-191-2</Authors>
+        <PackageId>StrekalovNikita.Powercollections</PackageId>
+        <Version>0.0.2-beta</Version>
+        <RepositoryUrl>https://github.com/nikita632112/DevTools_lab02.git</RepositoryUrl>
+    </PropertyGroup>
 
 </Project>
