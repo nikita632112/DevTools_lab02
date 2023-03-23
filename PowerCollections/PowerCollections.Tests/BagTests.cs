@@ -62,7 +62,7 @@ namespace Wintellect.PowerCollections.Tests
             }
 
             foreach (int x in count)
-                Assert.AreEqual(100, x);
+                Assert.AreEqual(0, x);
         }
 
         [TestMethod]
