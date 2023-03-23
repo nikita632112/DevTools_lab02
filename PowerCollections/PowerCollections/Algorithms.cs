@@ -61,7 +61,7 @@ namespace Wintellect.PowerCollections
             /// <param name="start">The start index of the view in the wrapped list.</param>
             /// <param name="count">The number of items in the view.</param>
             public ListRange(IList<T> wrappedList, int start, int count)
-            {
+            
                 this.wrappedList = wrappedList;
                 this.start = start;
                 this.count = count;
