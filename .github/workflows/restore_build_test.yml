@@ -1,0 +1,28 @@
+name: Restore Build Test
+
+on: push
+
+jobs:
+
+  restore_build_test:
+
+    runs-on: windows-latest 
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Restore
+      run: dotnet restore
+      working-directory: PowerCollections
+      
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: PowerCollections
+      
+    - name: Test
+      run: dotnet test --no-build
+      working-directory: PowerCollections

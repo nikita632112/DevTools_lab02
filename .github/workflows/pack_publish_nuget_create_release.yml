@@ -1,0 +1,40 @@
+name: Pack Publish NuGet Create Release
+on: workflow_dispatch
+  
+jobs:
+
+  pack_publish_nuget_create_release:
+
+    runs-on: windows-latest 
+    
+    permissions:
+      repository-projects: write
+      packages: write
+      contents: write
+      
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        
+    - name: Pack Project
+      run: dotnet pack
+      working-directory: PowerCollections  
+        
+    - name: Get Version
+      id: getversion
+      uses: mavrosxristoforos/get-xml-info@1.1.1
+      with: 
+        xml-file: 'PowerCollections/PowerCollections/PowerCollections.csproj'
+        xpath: '//Version'
+        
+    - name: Publish Package
+      run: dotnet nuget push "PowerCollections\PowerCollections\bin\Debug\*${{ steps.getversion.outputs.info }}.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/nikita632112/index.json --skip-duplicate   
+
+    - name: Create Release 
+      uses: ncipollo/release-action@v1.12.0
+      with: 
+        artifacts: 'PowerCollections\PowerCollections\bin\Debug\*${{ steps.getversion.outputs.info }}.nupkg'
+        tag: 'v${{ steps.getversion.outputs.info }}'
